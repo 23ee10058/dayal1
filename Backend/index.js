@@ -4,7 +4,14 @@ const shreeDayal=require('./models/user.models.js')
 const cors=require('cors')
 const app=express();
 app.use(express.json())
-app.use(cors())
+app.use(cors(
+    {
+        origin:["https://deploy-mern-1whq-vercel.app"],
+        methods:["GET","POST"],
+        credentials:true,
+
+    }
+))
 mongooseConnect().then(
     app.listen(3000,()=>{
         console.log('server is running on 3000')
